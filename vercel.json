@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/strava", "destination": "/api/strava" },
+    { "source": "/(.*)",       "destination": "/public/$1" }
+  ]
+}
