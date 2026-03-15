@@ -16,25 +16,25 @@
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', system-ui, Arial, sans-serif; background: var(--light); color: var(--dark); }
-
+ 
   /* Header */
   .header { background: linear-gradient(135deg, var(--accent), var(--accent-mid)); padding: 28px 40px; color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
   .header-left h1 { font-size: 24px; font-weight: 700; }
   .header-left p { font-size: 13px; opacity: 0.8; margin-top: 2px; }
-
+ 
   /* Drop zone */
   .drop-zone { border: 2px dashed rgba(255,255,255,0.4); border-radius: 10px; padding: 14px 24px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.85); }
   .drop-zone:hover, .drop-zone.dragover { border-color: white; background: rgba(255,255,255,0.1); }
   .drop-zone svg { width: 20px; height: 20px; fill: rgba(255,255,255,0.8); }
   .drop-zone input { display: none; }
-
+ 
   /* Stats bar */
   .stats-bar { display: flex; gap: 0; background: white; border-bottom: 1px solid #e0e0e0; flex-wrap: wrap; }
   .stat { flex: 1; min-width: 130px; text-align: center; padding: 16px 8px; border-right: 1px solid #f0f0f0; }
   .stat:last-child { border-right: none; }
   .stat .val { font-size: 26px; font-weight: 700; color: var(--accent); }
   .stat .lbl { font-size: 10px; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
-
+ 
   /* Filter bar */
   .filters { display: flex; gap: 12px; padding: 14px 40px; background: white; border-bottom: 1px solid #e8e8e8; align-items: center; flex-wrap: wrap; }
   .filters label { font-size: 12px; color: var(--gray); font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; }
@@ -42,7 +42,7 @@
   .filters .filter-group { display: flex; align-items: center; gap: 6px; }
   .btn-reset { padding: 6px 14px; border: 1px solid #ddd; border-radius: 6px; background: white; color: var(--gray); font-size: 12px; cursor: pointer; transition: all 0.15s; }
   .btn-reset:hover { border-color: var(--accent-mid); color: var(--accent); }
-
+ 
   /* Charts grid */
   .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 24px 40px; max-width: 1400px; margin: 0 auto; }
   .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
@@ -53,7 +53,7 @@
   .card.full .chart-wrap { height: 280px; }
   .card:not(.full) .chart-wrap { height: 260px; }
   canvas { width: 100% !important; height: 100% !important; }
-
+ 
   /* Table */
   .tbl-wrap { max-height: 320px; overflow-y: auto; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; }
@@ -61,20 +61,20 @@
   td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
   tr:nth-child(even) td { background: #fafafa; }
   tr:hover td { background: var(--accent-light); }
-
+ 
   /* Empty state */
   .empty { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; color: var(--gray); gap: 16px; }
   .empty svg { width: 64px; height: 64px; fill: #ccc; }
   .empty h2 { font-size: 20px; color: var(--dark); }
   .empty p { font-size: 14px; max-width: 400px; text-align: center; line-height: 1.5; }
   .empty .hint { font-size: 12px; color: #aaa; }
-
+ 
   #dashboard { display: none; }
   #emptyState { display: none; }
-
+ 
   /* Footer */
   .footer { text-align: center; padding: 20px; font-size: 11px; color: #bbb; }
-
+ 
   @media (max-width: 800px) {
     .grid { grid-template-columns: 1fr; padding: 16px; }
     .header { padding: 20px 16px; }
@@ -83,7 +83,7 @@
 </style>
 </head>
 <body>
-
+ 
 <div class="header">
   <div class="header-left">
     <h1>BJJ Training Dashboard - J&oslash;rgen Melau</h1>
@@ -96,14 +96,14 @@
     <input type="file" id="fileInput" accept=".csv">
   </div>
 </div>
-
+ 
 <div id="emptyState" class="empty">
   <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
   <h2>Upload Your Training Data</h2>
   <p>Export your activities from Garmin Connect as a CSV file, then drag it here or click the upload button above.</p>
   <p class="hint">Garmin Connect → Activities → Export CSV</p>
 </div>
-
+ 
 <div id="dashboard">
   <div class="stats-bar">
     <div class="stat"><div class="val" id="sSessions">--</div><div class="lbl">Sessions</div></div>
@@ -113,7 +113,7 @@
     <div class="stat"><div class="val" id="sAvgHR">--</div><div class="lbl">Avg Heart Rate</div></div>
     <div class="stat"><div class="val" id="sCalories">--</div><div class="lbl">Calories</div></div>
   </div>
-
+ 
   <div class="filters">
     <div class="filter-group">
       <label>Year</label>
@@ -125,7 +125,7 @@
     </div>
     <button class="btn-reset" id="btnReset">Reset Filters</button>
   </div>
-
+ 
   <div class="grid">
     <div class="card full">
       <h2>Monthly Training Volume <span class="badge" id="badgeMonths"></span></h2>
@@ -155,17 +155,17 @@
     </div>
   </div>
 </div>
-
+ 
 <div class="footer">BJJ Training Dashboard &middot; Data processed client-side &middot; Nothing is uploaded anywhere</div>
-
+ 
 <script>
 // ===== PRE-LOADED DATA =====
 const PRELOADED = [{"dateStr":"2025-01-06","year":2025,"month":"2025-01","totalMin":90,"timeStr":"01:30:00","avgHR":null,"maxHR":null,"calories":945},{"dateStr":"2025-01-08","year":2025,"month":"2025-01","totalMin":92,"timeStr":"01:32:00","avgHR":null,"maxHR":null,"calories":966},{"dateStr":"2025-01-27","year":2025,"month":"2025-01","totalMin":96.02,"timeStr":"01:36:01","avgHR":null,"maxHR":null,"calories":1008},{"dateStr":"2025-02-03","year":2025,"month":"2025-02","totalMin":99,"timeStr":"01:39:00","avgHR":null,"maxHR":null,"calories":1040},{"dateStr":"2025-02-10","year":2025,"month":"2025-02","totalMin":101.18,"timeStr":"01:41:11","avgHR":null,"maxHR":null,"calories":1062},{"dateStr":"2025-02-12","year":2025,"month":"2025-02","totalMin":98.53,"timeStr":"01:38:32","avgHR":null,"maxHR":null,"calories":1035},{"dateStr":"2025-02-17","year":2025,"month":"2025-02","totalMin":93.72,"timeStr":"01:33:43","avgHR":106,"maxHR":144,"calories":571},{"dateStr":"2025-02-24","year":2025,"month":"2025-02","totalMin":106.15,"timeStr":"01:46:09","avgHR":123,"maxHR":161,"calories":899},{"dateStr":"2025-02-28","year":2025,"month":"2025-02","totalMin":110.3,"timeStr":"01:50:18","avgHR":109,"maxHR":156,"calories":719},{"dateStr":"2025-03-03","year":2025,"month":"2025-03","totalMin":100.9,"timeStr":"01:40:54","avgHR":108,"maxHR":148,"calories":669},{"dateStr":"2025-03-07","year":2025,"month":"2025-03","totalMin":105.97,"timeStr":"01:45:58","avgHR":108,"maxHR":149,"calories":688},{"dateStr":"2025-03-07","year":2025,"month":"2025-03","totalMin":105.97,"timeStr":"01:45:58","avgHR":80,"maxHR":88,"calories":8},{"dateStr":"2025-03-14","year":2025,"month":"2025-03","totalMin":111.4,"timeStr":"01:51:24","avgHR":108,"maxHR":146,"calories":716},{"dateStr":"2025-03-21","year":2025,"month":"2025-03","totalMin":89.12,"timeStr":"01:29:07","avgHR":116,"maxHR":149,"calories":694},{"dateStr":"2025-03-23","year":2025,"month":"2025-03","totalMin":62,"timeStr":"01:02:00","avgHR":94,"maxHR":136,"calories":8},{"dateStr":"2025-03-28","year":2025,"month":"2025-03","totalMin":99.32,"timeStr":"01:39:19","avgHR":121,"maxHR":154,"calories":826},{"dateStr":"2025-03-31","year":2025,"month":"2025-03","totalMin":95,"timeStr":"01:35:00","avgHR":104,"maxHR":142,"calories":486},{"dateStr":"2025-04-03","year":2025,"month":"2025-04","totalMin":59.5,"timeStr":"00:59:30","avgHR":126,"maxHR":150,"calories":588},{"dateStr":"2025-04-04","year":2025,"month":"2025-04","totalMin":55.23,"timeStr":"00:55:14","avgHR":98,"maxHR":131,"calories":289},{"dateStr":"2025-04-21","year":2025,"month":"2025-04","totalMin":78.32,"timeStr":"01:18:19","avgHR":135,"maxHR":162,"calories":838},{"dateStr":"2025-04-22","year":2025,"month":"2025-04","totalMin":115.5,"timeStr":"01:55:30","avgHR":112,"maxHR":159,"calories":757},{"dateStr":"2025-04-25","year":2025,"month":"2025-04","totalMin":78.98,"timeStr":"01:18:59","avgHR":119,"maxHR":155,"calories":660},{"dateStr":"2025-04-28","year":2025,"month":"2025-04","totalMin":108.35,"timeStr":"01:48:21","avgHR":118,"maxHR":155,"calories":864},{"dateStr":"2025-05-04","year":2025,"month":"2025-05","totalMin":60.45,"timeStr":"01:00:27","avgHR":134,"maxHR":160,"calories":649},{"dateStr":"2025-05-05","year":2025,"month":"2025-05","totalMin":98.05,"timeStr":"01:38:03","avgHR":121,"maxHR":157,"calories":632},{"dateStr":"2025-05-09","year":2025,"month":"2025-05","totalMin":99.72,"timeStr":"01:39:43","avgHR":119,"maxHR":156,"calories":775},{"dateStr":"2025-05-19","year":2025,"month":"2025-05","totalMin":126.32,"timeStr":"02:06:19","avgHR":122,"maxHR":163,"calories":1046},{"dateStr":"2025-05-21","year":2025,"month":"2025-05","totalMin":32.22,"timeStr":"00:32:13","avgHR":107,"maxHR":123,"calories":247},{"dateStr":"2025-05-23","year":2025,"month":"2025-05","totalMin":64.12,"timeStr":"01:04:07","avgHR":91,"maxHR":148,"calories":299},{"dateStr":"2025-05-25","year":2025,"month":"2025-05","totalMin":17.27,"timeStr":"00:17:16","avgHR":82,"maxHR":104,"calories":78},{"dateStr":"2025-06-01","year":2025,"month":"2025-06","totalMin":50.23,"timeStr":"00:50:14","avgHR":113,"maxHR":149,"calories":353},{"dateStr":"2025-06-03","year":2025,"month":"2025-06","totalMin":24.38,"timeStr":"00:24:23","avgHR":76,"maxHR":111,"calories":50},{"dateStr":"2025-06-09","year":2025,"month":"2025-06","totalMin":81.6,"timeStr":"01:21:36","avgHR":116,"maxHR":155,"calories":599},{"dateStr":"2025-06-11","year":2025,"month":"2025-06","totalMin":52.27,"timeStr":"00:52:16","avgHR":126,"maxHR":158,"calories":493},{"dateStr":"2025-06-16","year":2025,"month":"2025-06","totalMin":102.43,"timeStr":"01:42:26","avgHR":122,"maxHR":160,"calories":941},{"dateStr":"2025-06-21","year":2025,"month":"2025-06","totalMin":80.48,"timeStr":"01:20:29","avgHR":119,"maxHR":155,"calories":653},{"dateStr":"2025-06-23","year":2025,"month":"2025-06","totalMin":92.67,"timeStr":"01:32:40","avgHR":121,"maxHR":160,"calories":774},{"dateStr":"2025-06-27","year":2025,"month":"2025-06","totalMin":90.57,"timeStr":"01:30:34","avgHR":113,"maxHR":151,"calories":635},{"dateStr":"2025-06-28","year":2025,"month":"2025-06","totalMin":123.45,"timeStr":"02:03:27","avgHR":119,"maxHR":153,"calories":1022},{"dateStr":"2025-06-30","year":2025,"month":"2025-06","totalMin":102.82,"timeStr":"01:42:49","avgHR":121,"maxHR":155,"calories":929},{"dateStr":"2025-07-02","year":2025,"month":"2025-07","totalMin":94.43,"timeStr":"01:34:26","avgHR":122,"maxHR":155,"calories":875},{"dateStr":"2025-07-04","year":2025,"month":"2025-07","totalMin":118.58,"timeStr":"01:58:35","avgHR":116,"maxHR":153,"calories":948},{"dateStr":"2025-07-05","year":2025,"month":"2025-07","totalMin":69.57,"timeStr":"01:09:34","avgHR":111,"maxHR":142,"calories":516},{"dateStr":"2025-07-08","year":2025,"month":"2025-07","totalMin":77.23,"timeStr":"01:17:14","avgHR":126,"maxHR":157,"calories":760},{"dateStr":"2025-07-09","year":2025,"month":"2025-07","totalMin":114.47,"timeStr":"01:54:28","avgHR":120,"maxHR":159,"calories":965},{"dateStr":"2025-07-11","year":2025,"month":"2025-07","totalMin":61.15,"timeStr":"01:01:09","avgHR":127,"maxHR":157,"calories":612},{"dateStr":"2025-07-25","year":2025,"month":"2025-07","totalMin":102.22,"timeStr":"01:42:13","avgHR":121,"maxHR":157,"calories":805},{"dateStr":"2025-07-27","year":2025,"month":"2025-07","totalMin":81.82,"timeStr":"01:21:49","avgHR":120,"maxHR":152,"calories":607},{"dateStr":"2025-07-28","year":2025,"month":"2025-07","totalMin":84.85,"timeStr":"01:24:51","avgHR":98,"maxHR":138,"calories":416},{"dateStr":"2025-08-04","year":2025,"month":"2025-08","totalMin":79.58,"timeStr":"01:19:35","avgHR":90,"maxHR":114,"calories":28},{"dateStr":"2025-08-06","year":2025,"month":"2025-08","totalMin":99.32,"timeStr":"01:39:19","avgHR":110,"maxHR":153,"calories":572},{"dateStr":"2025-08-08","year":2025,"month":"2025-08","totalMin":72.92,"timeStr":"01:12:55","avgHR":124,"maxHR":158,"calories":550},{"dateStr":"2025-08-11","year":2025,"month":"2025-08","totalMin":67.45,"timeStr":"01:07:27","avgHR":123,"maxHR":152,"calories":493},{"dateStr":"2025-08-20","year":2025,"month":"2025-08","totalMin":125.98,"timeStr":"02:05:59","avgHR":77,"maxHR":78,"calories":2},{"dateStr":"2025-08-22","year":2025,"month":"2025-08","totalMin":101.43,"timeStr":"01:41:26","avgHR":112,"maxHR":143,"calories":765},{"dateStr":"2025-08-25","year":2025,"month":"2025-08","totalMin":138.38,"timeStr":"02:18:23","avgHR":115,"maxHR":158,"calories":921},{"dateStr":"2025-08-29","year":2025,"month":"2025-08","totalMin":118.15,"timeStr":"01:58:09","avgHR":111,"maxHR":149,"calories":731},{"dateStr":"2025-08-31","year":2025,"month":"2025-08","totalMin":58.25,"timeStr":"00:58:15","avgHR":102,"maxHR":145,"calories":308},{"dateStr":"2025-09-03","year":2025,"month":"2025-09","totalMin":141.33,"timeStr":"02:21:20","avgHR":110,"maxHR":147,"calories":881},{"dateStr":"2025-09-06","year":2025,"month":"2025-09","totalMin":27.25,"timeStr":"00:27:15","avgHR":114,"maxHR":135,"calories":218},{"dateStr":"2025-09-10","year":2025,"month":"2025-09","totalMin":138.93,"timeStr":"02:18:56","avgHR":108,"maxHR":145,"calories":807},{"dateStr":"2025-09-13","year":2025,"month":"2025-09","totalMin":50.07,"timeStr":"00:50:04","avgHR":89,"maxHR":140,"calories":20},{"dateStr":"2025-09-15","year":2025,"month":"2025-09","totalMin":125.88,"timeStr":"02:05:53","avgHR":107,"maxHR":138,"calories":730},{"dateStr":"2025-09-29","year":2025,"month":"2025-09","totalMin":133.37,"timeStr":"02:13:22","avgHR":65,"maxHR":94,"calories":4},{"dateStr":"2025-10-01","year":2025,"month":"2025-10","totalMin":128.53,"timeStr":"02:08:32","avgHR":119,"maxHR":153,"calories":953},{"dateStr":"2025-10-03","year":2025,"month":"2025-10","totalMin":101.18,"timeStr":"01:41:11","avgHR":102,"maxHR":146,"calories":547},{"dateStr":"2025-10-06","year":2025,"month":"2025-10","totalMin":139.92,"timeStr":"02:19:55","avgHR":117,"maxHR":153,"calories":1006},{"dateStr":"2025-10-13","year":2025,"month":"2025-10","totalMin":139.85,"timeStr":"02:19:51","avgHR":106,"maxHR":144,"calories":797},{"dateStr":"2025-10-15","year":2025,"month":"2025-10","totalMin":115.8,"timeStr":"01:55:48","avgHR":111,"maxHR":153,"calories":730},{"dateStr":"2025-10-17","year":2025,"month":"2025-10","totalMin":94.57,"timeStr":"01:34:34","avgHR":121,"maxHR":151,"calories":753},{"dateStr":"2025-10-20","year":2025,"month":"2025-10","totalMin":121.93,"timeStr":"02:01:56","avgHR":114,"maxHR":147,"calories":849},{"dateStr":"2025-10-24","year":2025,"month":"2025-10","totalMin":175.55,"timeStr":"02:55:33","avgHR":116,"maxHR":155,"calories":1178},{"dateStr":"2025-10-27","year":2025,"month":"2025-10","totalMin":130.68,"timeStr":"02:10:41","avgHR":98,"maxHR":153,"calories":607},{"dateStr":"2025-10-29","year":2025,"month":"2025-10","totalMin":122.98,"timeStr":"02:02:59","avgHR":110,"maxHR":144,"calories":772},{"dateStr":"2025-11-03","year":2025,"month":"2025-11","totalMin":134.93,"timeStr":"02:14:56","avgHR":110,"maxHR":147,"calories":853},{"dateStr":"2025-11-07","year":2025,"month":"2025-11","totalMin":157.88,"timeStr":"02:37:53","avgHR":98,"maxHR":143,"calories":707},{"dateStr":"2025-11-10","year":2025,"month":"2025-11","totalMin":126.48,"timeStr":"02:06:29","avgHR":116,"maxHR":155,"calories":900},{"dateStr":"2025-11-15","year":2025,"month":"2025-11","totalMin":57.72,"timeStr":"00:57:43","avgHR":71,"maxHR":85,"calories":5},{"dateStr":"2025-11-17","year":2025,"month":"2025-11","totalMin":137.97,"timeStr":"02:17:58","avgHR":114,"maxHR":154,"calories":942},{"dateStr":"2025-11-19","year":2025,"month":"2025-11","totalMin":122.38,"timeStr":"02:02:23","avgHR":128,"maxHR":160,"calories":1113},{"dateStr":"2025-11-20","year":2025,"month":"2025-11","totalMin":111.07,"timeStr":"01:51:04","avgHR":81,"maxHR":106,"calories":302},{"dateStr":"2025-11-24","year":2025,"month":"2025-11","totalMin":123.03,"timeStr":"02:03:02","avgHR":119,"maxHR":158,"calories":960},{"dateStr":"2025-11-26","year":2025,"month":"2025-11","totalMin":132.4,"timeStr":"02:12:24","avgHR":111,"maxHR":153,"calories":843},{"dateStr":"2025-12-01","year":2025,"month":"2025-12","totalMin":106.87,"timeStr":"01:46:52","avgHR":124,"maxHR":157,"calories":892},{"dateStr":"2025-12-08","year":2025,"month":"2025-12","totalMin":86.88,"timeStr":"01:26:53","avgHR":112,"maxHR":142,"calories":583},{"dateStr":"2025-12-12","year":2025,"month":"2025-12","totalMin":84.78,"timeStr":"01:24:47","avgHR":115,"maxHR":147,"calories":615},{"dateStr":"2025-12-15","year":2025,"month":"2025-12","totalMin":121.35,"timeStr":"02:01:21","avgHR":121,"maxHR":149,"calories":909},{"dateStr":"2025-12-20","year":2025,"month":"2025-12","totalMin":69.58,"timeStr":"01:09:35","avgHR":115,"maxHR":149,"calories":491},{"dateStr":"2025-12-31","year":2025,"month":"2025-12","totalMin":84.63,"timeStr":"01:24:38","avgHR":114,"maxHR":151,"calories":611},{"dateStr":"2026-01-04","year":2026,"month":"2026-01","totalMin":89.4,"timeStr":"01:29:24","avgHR":124,"maxHR":159,"calories":735},{"dateStr":"2026-01-05","year":2026,"month":"2026-01","totalMin":106.72,"timeStr":"01:46:43","avgHR":98,"maxHR":145,"calories":464},{"dateStr":"2026-01-07","year":2026,"month":"2026-01","totalMin":126.05,"timeStr":"02:06:03","avgHR":116,"maxHR":153,"calories":856},{"dateStr":"2026-01-09","year":2026,"month":"2026-01","totalMin":66.8,"timeStr":"01:06:48","avgHR":100,"maxHR":136,"calories":330},{"dateStr":"2026-01-10","year":2026,"month":"2026-01","totalMin":61.82,"timeStr":"01:01:49","avgHR":114,"maxHR":147,"calories":449},{"dateStr":"2026-01-18","year":2026,"month":"2026-01","totalMin":54.55,"timeStr":"00:54:33","avgHR":92,"maxHR":101,"calories":3},{"dateStr":"2026-01-23","year":2026,"month":"2026-01","totalMin":105.55,"timeStr":"01:45:33","avgHR":117,"maxHR":152,"calories":792},{"dateStr":"2026-01-26","year":2026,"month":"2026-01","totalMin":133.45,"timeStr":"02:13:27","avgHR":104,"maxHR":149,"calories":515},{"dateStr":"2026-01-28","year":2026,"month":"2026-01","totalMin":137.63,"timeStr":"02:17:38","avgHR":113,"maxHR":149,"calories":890},{"dateStr":"2026-02-07","year":2026,"month":"2026-02","totalMin":85.42,"timeStr":"01:25:25","avgHR":121,"maxHR":152,"calories":670},{"dateStr":"2026-02-09","year":2026,"month":"2026-02","totalMin":93.88,"timeStr":"01:33:53","avgHR":106,"maxHR":141,"calories":538},{"dateStr":"2026-02-11","year":2026,"month":"2026-02","totalMin":133.47,"timeStr":"02:13:28","avgHR":119,"maxHR":154,"calories":1014},{"dateStr":"2026-02-16","year":2026,"month":"2026-02","totalMin":138.18,"timeStr":"02:18:11","avgHR":118,"maxHR":151,"calories":1021},{"dateStr":"2026-02-28","year":2026,"month":"2026-02","totalMin":72.23,"timeStr":"01:12:14","avgHR":107,"maxHR":155,"calories":410},{"dateStr":"2026-03-02","year":2026,"month":"2026-03","totalMin":106.5,"timeStr":"01:46:30","avgHR":107,"maxHR":143,"calories":622},{"dateStr":"2026-03-04","year":2026,"month":"2026-03","totalMin":134.97,"timeStr":"02:14:58","avgHR":110,"maxHR":141,"calories":650},{"dateStr":"2026-03-09","year":2026,"month":"2026-03","totalMin":132.58,"timeStr":"02:12:35","avgHR":105,"maxHR":134,"calories":710},{"dateStr":"2026-03-11","year":2026,"month":"2026-03","totalMin":117.62,"timeStr":"01:57:37","avgHR":112,"maxHR":162,"calories":764}];
-
+ 
 // ===== STATE =====
 let allSessions = [];
 let charts = {};
-
+ 
 // ===== CSV PARSING =====
 function parseCSV(text) {
   const result = Papa.parse(text, { header: true, skipEmptyLines: true });
@@ -190,7 +190,7 @@ function parseCSV(text) {
   sessions.sort((a, b) => a.date - b.date);
   return sessions;
 }
-
+ 
 // ===== FILTERING =====
 function getFiltered() {
   const year = document.getElementById('fYear').value;
@@ -201,7 +201,7 @@ function getFiltered() {
     return true;
   });
 }
-
+ 
 // ===== STATS =====
 function updateStats(sessions) {
   const totalSec = sessions.reduce((a, s) => a + s.totalMin * 60, 0);
@@ -210,45 +210,45 @@ function updateStats(sessions) {
   const hrs = sessions.map(s => s.avgHR).filter(Boolean);
   const avgHR = hrs.length ? Math.round(hrs.reduce((a,b) => a+b, 0) / hrs.length) : '--';
   const totalCal = sessions.reduce((a, s) => a + s.calories, 0);
-
+ 
   // Sessions per week
   const weeks = new Set();
   sessions.forEach(s => { const iso = getISOWeek(s.date); weeks.add(iso); });
   const perWeek = weeks.size ? (sessions.length / weeks.size).toFixed(1) : '--';
-
+ 
   document.getElementById('sSessions').textContent = sessions.length;
   document.getElementById('sTime').textContent = h + 'h ' + m + 'm';
   document.getElementById('sAvgLen').textContent = avgMin + ' min';
   document.getElementById('sPerWeek').textContent = perWeek;
   document.getElementById('sAvgHR').textContent = avgHR === '--' ? '--' : avgHR + ' bpm';
   document.getElementById('sCalories').textContent = totalCal.toLocaleString();
-
+ 
   const first = sessions.length ? sessions[0].dateStr : '';
   const last = sessions.length ? sessions[sessions.length - 1].dateStr : '';
   document.getElementById('headerSubtitle').textContent = sessions.length
     ? `${first} to ${last} \u00b7 ${sessions.length} sessions`
     : 'No matching sessions';
 }
-
+ 
 function getISOWeek(d) {
   const dt = new Date(d); dt.setHours(0,0,0,0);
   dt.setDate(dt.getDate() + 3 - (dt.getDay() + 6) % 7);
   const w1 = new Date(dt.getFullYear(), 0, 4);
   return dt.getFullYear() + '-W' + String(1 + Math.round(((dt - w1) / 86400000 - 3 + (w1.getDay() + 6) % 7) / 7)).padStart(2, '0');
 }
-
+ 
 // ===== CHARTS =====
 const MN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 Chart.defaults.font.family = "'Segoe UI', system-ui, Arial, sans-serif";
 Chart.defaults.font.size = 11;
 Chart.defaults.color = '#7f8c8d';
-
+ 
 function destroyCharts() { Object.values(charts).forEach(c => c.destroy()); charts = {}; }
-
+ 
 function buildCharts(sessions) {
   destroyCharts();
   if (!sessions.length) return;
-
+ 
   // Monthly aggregation
   const monthly = {};
   sessions.forEach(s => {
@@ -264,9 +264,9 @@ function buildCharts(sessions) {
   const mSessions = months.map(m => monthly[m].count);
   const mAvgHR = months.map(m => { const a = monthly[m].avgHRs; return a.length ? Math.round(a.reduce((x,y)=>x+y,0)/a.length) : null; });
   const mMaxHR = months.map(m => { const a = monthly[m].maxHRs; return a.length ? Math.round(a.reduce((x,y)=>x+y,0)/a.length) : null; });
-
+ 
   document.getElementById('badgeMonths').textContent = months.length + ' months';
-
+ 
   // 1. Monthly volume
   charts.monthly = new Chart(document.getElementById('cMonthly'), {
     type: 'bar',
@@ -282,7 +282,7 @@ function buildCharts(sessions) {
       scales: { y: { beginAtZero: true, title: { display: true, text: 'Hours' }, grid: { color: '#f4f4f4' } },
                 y1: { beginAtZero: true, position: 'right', title: { display: true, text: 'Sessions' }, grid: { drawOnChartArea: false } } } }
   });
-
+ 
   // 2. Day of week
   const dowCount = [0,0,0,0,0,0,0];
   sessions.forEach(s => dowCount[((s.date.getDay() + 6) % 7)]++); // Mon=0
@@ -297,7 +297,7 @@ function buildCharts(sessions) {
       plugins: { legend: { display: false } },
       scales: { x: { beginAtZero: true, grid: { color: '#f4f4f4' } }, y: { grid: { display: false } } } }
   });
-
+ 
   // 3. Weekly frequency
   const weekly = {};
   sessions.forEach(s => { const w = getISOWeek(s.date); weekly[w] = (weekly[w] || 0) + 1; });
@@ -314,7 +314,7 @@ function buildCharts(sessions) {
       plugins: { legend: { position: 'bottom' },
         tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw} weeks` } } } }
   });
-
+ 
   // 4. Monthly HR
   charts.hr = new Chart(document.getElementById('cHR'), {
     type: 'line',
@@ -327,7 +327,7 @@ function buildCharts(sessions) {
     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } },
       scales: { y: { min: 80, max: 170, title: { display: true, text: 'BPM' }, grid: { color: '#f4f4f4' } } } }
   });
-
+ 
   // 5. Scatter
   const scatterData = sessions.filter(s => s.avgHR).map(s => ({ x: s.date, y: s.avgHR }));
   charts.scatter = new Chart(document.getElementById('cScatter'), {
@@ -341,7 +341,7 @@ function buildCharts(sessions) {
       scales: { x: { type: 'time', time: { unit: 'month' }, grid: { color: '#f4f4f4' } },
                 y: { min: 50, max: 170, title: { display: true, text: 'BPM' }, grid: { color: '#f4f4f4' } } } }
   });
-
+ 
   // Session log table
   const tbody = document.getElementById('tblBody');
   tbody.innerHTML = '';
@@ -352,14 +352,14 @@ function buildCharts(sessions) {
     tbody.appendChild(tr);
   });
 }
-
+ 
 // ===== REFRESH =====
 function refresh() {
   const sessions = getFiltered();
   updateStats(sessions);
   buildCharts(sessions);
 }
-
+ 
 // ===== FILE HANDLING =====
 function handleFile(file) {
   if (!file || !file.name.toLowerCase().endsWith('.csv')) { alert('Please upload a CSV file.'); return; }
@@ -373,18 +373,18 @@ function handleFile(file) {
   };
   reader.readAsText(file);
 }
-
+ 
 // ===== EVENT LISTENERS =====
 const dz = document.getElementById('dropZone');
 const fi = document.getElementById('fileInput');
-
+ 
 dz.addEventListener('click', () => fi.click());
 fi.addEventListener('change', e => { if (e.target.files[0]) handleFile(e.target.files[0]); });
-
+ 
 document.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('dragover'); });
 document.addEventListener('dragleave', e => { if (!e.relatedTarget || !document.contains(e.relatedTarget)) dz.classList.remove('dragover'); });
 document.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
-
+ 
 document.getElementById('fYear').addEventListener('change', refresh);
 document.getElementById('fMinDur').addEventListener('change', refresh);
 document.getElementById('btnReset').addEventListener('click', () => {
@@ -392,7 +392,7 @@ document.getElementById('btnReset').addEventListener('click', () => {
   document.getElementById('fMinDur').value = 10;
   refresh();
 });
-
+ 
 // ===== LOAD SESSIONS (preloaded or from CSV) =====
 function loadSessions(raw) {
   // Convert raw objects to session objects with Date instances
@@ -401,7 +401,7 @@ function loadSessions(raw) {
     date: new Date(s.dateStr + 'T12:00:00'),
   })).sort((a, b) => a.date - b.date);
 }
-
+ 
 function initDashboard() {
   const years = [...new Set(allSessions.map(s => s.year))].sort();
   const sel = document.getElementById('fYear');
@@ -411,7 +411,7 @@ function initDashboard() {
   document.getElementById('dashboard').style.display = 'block';
   refresh();
 }
-
+ 
 // ===== LIVE FETCH FROM STRAVA API, FALLBACK TO PRE-LOADED =====
 async function fetchLiveData() {
   const indicator = document.getElementById('liveIndicator');
@@ -443,3 +443,4 @@ fetchLiveData();
 </script>
 </body>
 </html>
+ 
